@@ -35,4 +35,5 @@ def main():
     distance = res_matrix[m][n]
     print(distance)
 
-main()
+if __name__ == '__main__':
+    main()

@@ -28,7 +28,7 @@ def levenshtein(word1, word2):
             if min(i,j) == 0:
                 lmatrix[i][j]=max(i,j)
             else:
-                factor = 1 if word1[i-1]==word2[j-1] else 0
+                factor = not word1[i-1]==word2[j-1]
                 lmatrix[i][j]=min(lmatrix[i-1,j]+1,lmatrix[i][j-1]+1,lmatrix[i-1,j-1]+factor)
     return lmatrix    
 

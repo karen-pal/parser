@@ -12,14 +12,8 @@ def create_matrix(word1, word2, m, n):
         lmatrix[0][j]=j
     return lmatrix
 
-#lmatrix = create_matrix(word1,word2)
-#print(lmatrix)
 
-
-def levenshtein(word1, word2):
-
-    m = len(word1)
-    n = len(word2)
+def levenshtein(word1, word2, m, n):
     lmatrix = create_matrix(word1,word2,m+1,n+1)
     #additional row and column for dynprog purposes
 
@@ -33,7 +27,9 @@ def levenshtein(word1, word2):
     return lmatrix    
 
 
-res_matrix = levenshtein(word1, word2)
+m = len(word1) if len(word1)<4 else 4
+n = len(word2) if len(word2)<4 else 4
+res_matrix = levenshtein(word1, word2, m, n)
 print(res_matrix)
-distance = res_matrix[len(word1)][len(word2)]
+distance = res_matrix[m][n]
 print(distance)

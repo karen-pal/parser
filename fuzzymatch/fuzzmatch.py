@@ -1,8 +1,8 @@
 import sys
 import numpy as np
 
-word1=sys.argv[1]
-word2=sys.argv[2]
+word1=sys.argv[1].lower()
+word2=sys.argv[2].lower()
 
 def create_matrix(word1, word2, m, n):
     lmatrix = np.arange(m*n).reshape(m,n)

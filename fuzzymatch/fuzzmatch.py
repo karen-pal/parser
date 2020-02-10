@@ -1,8 +1,6 @@
 import sys
 import numpy as np
 
-word1=sys.argv[1].lower()
-word2=sys.argv[2].lower()
 
 def create_matrix(word1, word2, m, n):
     lmatrix = np.arange(m*n).reshape(m,n)
@@ -26,10 +24,15 @@ def levenshtein(word1, word2, m, n):
                 lmatrix[i][j]=min(lmatrix[i-1,j]+1,lmatrix[i][j-1]+1,lmatrix[i-1,j-1]+factor)
     return lmatrix    
 
+def main():
+    word1=sys.argv[1].lower()
+    word2=sys.argv[2].lower()
+    print(word1, word2)
+    m = len(word1) if len(word1)<4 else 4
+    n = len(word2) if len(word2)<4 else 4
+    res_matrix = levenshtein(word1, word2, m, n)
+    print(res_matrix)
+    distance = res_matrix[m][n]
+    print(distance)
 
-m = len(word1) if len(word1)<4 else 4
-n = len(word2) if len(word2)<4 else 4
-res_matrix = levenshtein(word1, word2, m, n)
-print(res_matrix)
-distance = res_matrix[m][n]
-print(distance)
+main()
